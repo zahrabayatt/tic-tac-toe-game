@@ -33,21 +33,17 @@ const Board = ({ xIsNext, squares, OnPlay }: Props) => {
   return (
     <>
       <div className="status">{status}</div>
-      <div className="board-row">
-        <Square value={squares[0]} OnClick={() => handleSquareClick(0)} />
-        <Square value={squares[1]} OnClick={() => handleSquareClick(1)} />
-        <Square value={squares[2]} OnClick={() => handleSquareClick(2)} />
-      </div>
-      <div className="board-row">
-        <Square value={squares[3]} OnClick={() => handleSquareClick(3)} />
-        <Square value={squares[4]} OnClick={() => handleSquareClick(4)} />
-        <Square value={squares[5]} OnClick={() => handleSquareClick(5)} />
-      </div>
-      <div className="board-row">
-        <Square value={squares[6]} OnClick={() => handleSquareClick(6)} />
-        <Square value={squares[7]} OnClick={() => handleSquareClick(7)} />
-        <Square value={squares[8]} OnClick={() => handleSquareClick(8)} />
-      </div>
+      {[0, 3, 6].map((row) => (
+        <div className="board-row" key={row}>
+          {[row, row + 1, row + 2].map((col) => (
+            <Square
+              value={squares[col]}
+              OnClick={() => handleSquareClick(col)}
+              key={col}
+            />
+          ))}
+        </div>
+      ))}
     </>
   );
 };
