@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import "./Square.css";
+import "./Square.scss";
 
 interface Props {
   value: string;
