@@ -3,7 +3,7 @@ import React from "react";
 import "./Square.css";
 
 interface Props {
-  value: number;
+  value: string;
   OnClick: () => void;
 }
 
