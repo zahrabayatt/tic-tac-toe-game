@@ -13,13 +13,13 @@ const Toggle = ({ value, onToggle }: Props) => {
     <div
       onClick={onToggle}
       className={`md:w-14 md:h-7 w-12 h-6 flex items-center ${
-        value === true ? "bg-blue-200" : "bg-gray-300"
+        value ? "bg-blue-200" : "bg-gray-300"
       } rounded-full p-1 cursor-pointer`}
     >
       <div
         className={`${
-          value === true ? "bg-blue-600" : "bg-white"
-        } md:w-6 md:h-6 h-5 w-5 rounded-full shadow-md transition transform${
+          value ? "bg-blue-600" : "bg-white"
+        } md:w-6 md:h-6 h-5 w-5 rounded-full shadow-md transition ${
           value ? toggleClass : "null"
         }`}
       ></div>

@@ -1,34 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Tic-Tac-Toe Game
+
+This is a simple implementation of the Tic-Tac-Toe game using React. The game allows two players to take turns marking spaces on a 3x3 grid until one player wins or the game ends in a draw.
+
+## Features
+
+- Player vs Player: Two players can take turns playing the game.
+- Real-Time Updates: The game board is updated in real-time to reflect the moves of the players.
+- Win Condition Detection: The program checks for a win condition after each move.
+- Draw Detection: The program detects a draw when all spaces on the board are filled without a winner.
+- After every move, a list of moves is displayed on the right side of the game board.
+- Players can click on any move in the list to jump back to that specific point in the game.
+- The game board will be updated to reflect the selected move, and players can continue playing from that point.
+
 
 ## Getting Started
 
-First, run the development server:
+To get started with this Tic-Tac-Toe game, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+1. Clone the repository to your local machine using the following command:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```
+   git clone https://github.com/zahrabayatt/tic-tac-toe-game.git
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. Navigate to the project directory:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```
+   cd tic-tac-toe-game
+   ```
 
-## Learn More
+3. Install the required dependencies. You can use a package manager like npm or yarn:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Start the web app:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+   This will start the web app locally, and you can access it in your web browser at `http://localhost:3000`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## How to Play
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. The game is played on a 3x3 grid. Each cell on the grid represents a space where players can make their moves.
+
+2. Two players take turns marking spaces on the grid. The first player uses "X" as their marker, and the second player uses "O" as their marker.
+
+3. The players can click on an empty space on the grid to make their move. Once a move is made, the grid is updated in real-time to reflect the move.
+
+4. The first player to get three of their marks in a horizontal, vertical, or diagonal row wins the game. If all spaces on the board are filled without a winner, the game ends in a draw.
+
+5. At the end of the game, the web app will display a message indicating the winner or a draw. You can reset the game and play again by clicking the "Reset" button.
+
+## Contributions
+
+Contributions to this repository are welcome. If you find any issues or want to suggest improvements, please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute the code as per the terms of the license.
+
+## Acknowledgements
+
+- The project is developed by [Zahra Bayat](https://github.com/zahrabayatt).
+- Inspired by the classic game of Tic-Tac-Toe.
