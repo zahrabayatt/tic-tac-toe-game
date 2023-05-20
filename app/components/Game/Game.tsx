@@ -24,12 +24,31 @@ const Game = () => {
   const handleToggleSortOrder = () => {
     setSortAscending(!sortAscending);
   };
+
+  const getLocation = (move: number) => {
+    if (move === 0) {
+      return "";
+    }
+    const previousSquares = history[move - 1];
+    const currentSquares = history[move];
+    for (let i = 0; i < previousSquares.length; i++) {
+      if (previousSquares[i] !== currentSquares[i]) {
+        const row = Math.floor(i / 3) + 1;
+        const col = (i % 3) + 1;
+        return `Row: ${row}, Col: ${col}`;
+      }
+    }
+    return "";
+  };
+
   let moves = history.map((squares, move) => {
     let description;
     if (move === currentMove) {
-      description = "You are at move #" + move;
+      description =
+        "You are at move #" + move + " (Location: " + getLocation(move) + ")";
     } else if (move > 0) {
-      description = "Go to move #" + move;
+      description =
+        "Go to move #" + move + " (Location: " + getLocation(move) + ")";
     } else {
       description = "Go to game start";
     }
