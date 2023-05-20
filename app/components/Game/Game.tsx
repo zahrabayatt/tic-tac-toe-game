@@ -45,7 +45,9 @@ const Game = () => {
     let description;
     if (move === currentMove) {
       description =
-        "You are at move #" + move + " (Location: " + getLocation(move) + ")";
+        "You are at move #" +
+        move +
+        (move != 0 ? " (Location: " + getLocation(move) + ")" : "");
     } else if (move > 0) {
       description =
         "Go to move #" + move + " (Location: " + getLocation(move) + ")";
