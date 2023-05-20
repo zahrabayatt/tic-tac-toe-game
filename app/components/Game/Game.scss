@@ -4,7 +4,15 @@
 }
 
 .game-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   margin-left: 20px;
+
+  .sort{
+    display: flex;
+    gap: 5px;
+  }
 
   & button {
     border: 1px solid #999;

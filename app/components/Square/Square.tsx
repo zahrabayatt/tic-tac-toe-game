@@ -4,12 +4,12 @@ import "./Square.scss";
 
 interface Props {
   value: string;
-  OnClick: () => void;
+  onClick: () => void;
 }
 
-const Square = ({ value, OnClick }: Props) => {
+const Square = ({ value, onClick }: Props) => {
   return (
-    <button onClick={OnClick} className="square">
+    <button onClick={onClick} className="square">
       {value}
     </button>
   );

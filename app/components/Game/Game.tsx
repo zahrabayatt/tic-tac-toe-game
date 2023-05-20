@@ -2,10 +2,12 @@
 import React, { useState } from "react";
 import Board from "../Board/Board";
 import "./Game.scss";
+import Toggle from "../Toggle/Toggle";
 
 const Game = () => {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
+  const [sortAscending, setSortAscending] = useState(true);
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
 
@@ -19,7 +21,10 @@ const Game = () => {
     setCurrentMove(nextMove);
   };
 
-  const moves = history.map((squares, move) => {
+  const handleToggleSortOrder = () => {
+    setSortAscending(!sortAscending);
+  };
+  let moves = history.map((squares, move) => {
     let description;
     if (move === currentMove) {
       description = "You ar at move #" + move;
@@ -35,12 +40,20 @@ const Game = () => {
     );
   });
 
+  if (!sortAscending) {
+    moves = moves.reverse();
+  }
+
   return (
     <div className="game">
       <div className="game-board">
-        <Board xIsNext={xIsNext} squares={currentSquares} OnPlay={handlePlay} />
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
+        <div className="sort">
+          <p>Sort {sortAscending ? "Ascending" : "Descending"}: </p>
+          <Toggle onToggle={handleToggleSortOrder} value={sortAscending} />
+        </div>
         <ol>{moves}</ol>
       </div>
     </div>

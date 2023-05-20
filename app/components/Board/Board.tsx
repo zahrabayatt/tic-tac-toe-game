@@ -6,10 +6,10 @@ import Square from "../Square/Square";
 interface Props {
   xIsNext: boolean;
   squares: string[];
-  OnPlay: (nextSquare: string[]) => void;
+  onPlay: (nextSquare: string[]) => void;
 }
 
-const Board = ({ xIsNext, squares, OnPlay }: Props) => {
+const Board = ({ xIsNext, squares, onPlay }: Props) => {
   const handleSquareClick = (i: number) => {
     if (squares[i] || calculateWinner(squares)) return;
 
@@ -19,7 +19,7 @@ const Board = ({ xIsNext, squares, OnPlay }: Props) => {
     } else {
       nextSquares[i] = "O";
     }
-    OnPlay(nextSquares);
+    onPlay(nextSquares);
   };
 
   const winner = calculateWinner(squares);
@@ -38,7 +38,7 @@ const Board = ({ xIsNext, squares, OnPlay }: Props) => {
           {[row, row + 1, row + 2].map((col) => (
             <Square
               value={squares[col]}
-              OnClick={() => handleSquareClick(col)}
+              onClick={() => handleSquareClick(col)}
               key={col}
             />
           ))}
