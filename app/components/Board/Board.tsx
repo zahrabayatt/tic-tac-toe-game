@@ -5,8 +5,8 @@ import Square from "../Square/Square";
 
 interface Props {
   xIsNext: boolean;
-  squares: string[];
-  onPlay: (nextSquare: string[]) => void;
+  squares: (string | null)[];
+  onPlay: (nextSquare: (string | null)[]) => void;
 }
 
 const Board = ({ xIsNext, squares, onPlay }: Props) => {
@@ -26,6 +26,8 @@ const Board = ({ xIsNext, squares, onPlay }: Props) => {
   let status;
   if (winner) {
     status = "Winner: " + winner;
+  } else if (!squares.includes(null)) {
+    status = "Draw";
   } else {
     status = "Next player: " + (xIsNext ? "X" : "O");
   }
@@ -48,7 +50,7 @@ const Board = ({ xIsNext, squares, onPlay }: Props) => {
   );
 };
 
-const calculateWinner = (squares: string[]) => {
+const calculateWinner = (squares: (string | null)[]) => {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],

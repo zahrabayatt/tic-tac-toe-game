@@ -11,7 +11,7 @@ const Game = () => {
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
 
-  const handlePlay = (nextSquares: string[]) => {
+  const handlePlay = (nextSquares: (string | null)[]) => {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
     setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1);
@@ -27,7 +27,7 @@ const Game = () => {
   let moves = history.map((squares, move) => {
     let description;
     if (move === currentMove) {
-      description = "You ar at move #" + move;
+      description = "You are at move #" + move;
     } else if (move > 0) {
       description = "Go to move #" + move;
     } else {
