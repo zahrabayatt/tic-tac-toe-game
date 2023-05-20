@@ -1,5 +1,5 @@
 .square {
-  background: #fff;
+  background-color: #fff;
   border: 1px solid #999;
   float: left;
   font-size: 24px;
@@ -11,4 +11,8 @@
   padding: 0;
   text-align: center;
   width: 34px;
+}
+
+.highlight{
+  background-color: yellow;
 }

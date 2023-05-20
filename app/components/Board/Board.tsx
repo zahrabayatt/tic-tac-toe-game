@@ -9,9 +9,14 @@ interface Props {
   onPlay: (nextSquare: (string | null)[]) => void;
 }
 
+interface WinningInfo {
+  winner: string | null;
+  winningSquares: number[];
+}
+
 const Board = ({ xIsNext, squares, onPlay }: Props) => {
   const handleSquareClick = (i: number) => {
-    if (squares[i] || calculateWinner(squares)) return;
+    if (squares[i] || calculateWinner(squares).winner) return;
 
     const nextSquares = squares.slice();
     if (xIsNext) {
@@ -22,7 +27,7 @@ const Board = ({ xIsNext, squares, onPlay }: Props) => {
     onPlay(nextSquares);
   };
 
-  const winner = calculateWinner(squares);
+  const { winner, winningSquares } = calculateWinner(squares);
   let status;
   if (winner) {
     status = "Winner: " + winner;
@@ -42,6 +47,7 @@ const Board = ({ xIsNext, squares, onPlay }: Props) => {
               value={squares[col]}
               onClick={() => handleSquareClick(col)}
               key={col}
+              isHighlighted={winningSquares.includes(col)}
             />
           ))}
         </div>
@@ -50,7 +56,7 @@ const Board = ({ xIsNext, squares, onPlay }: Props) => {
   );
 };
 
-const calculateWinner = (squares: (string | null)[]) => {
+const calculateWinner = (squares: (string | null)[]): WinningInfo => {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -64,10 +70,16 @@ const calculateWinner = (squares: (string | null)[]) => {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return {
+        winner: squares[a],
+        winningSquares: [a, b, c],
+      };
     }
   }
-  return null;
+  return {
+    winner: null,
+    winningSquares: [],
+  };
 };
 
 export default Board;
